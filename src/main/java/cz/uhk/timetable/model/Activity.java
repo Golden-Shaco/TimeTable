@@ -1,0 +1,96 @@
+package cz.uhk.timetable.model;
+
+import java.time.LocalTime;
+
+public class Activity {
+    /** Module abbreviation. **/
+    private String id;
+    /** Full module name. **/
+    private String name;
+    private String teacher;
+    private String day;
+    private String type;
+    private LocalTime start, end;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalTime getStart() {
+        return start;
+    }
+
+    public void setStart(LocalTime start) {
+        this.start = start;
+    }
+
+    public LocalTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalTime end) {
+        this.end = end;
+    }
+
+    public Activity(String id, String name, String teacher, String day, String type, LocalTime start, LocalTime end) {
+        this.id = id;
+        this.name = name;
+        this.teacher = teacher;
+        this.day = day;
+        this.type = type;
+        this.start = start;
+        this.end = end;
+    }
+
+    public Activity() {
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", day='" + day + '\'' +
+                ", type='" + type + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
+}
