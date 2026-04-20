@@ -9,8 +9,8 @@ public class MockTimetableProvider implements ITimetableProvider {
     @Override
     public LocationTimetable readTimetable(String building, String room) {
         var tt = new LocationTimetable("J", "J22");
-        tt.getActivities().add(new Activity("PRO1", "Programováni I", "Kozel", "Pondělí", "Cvičení", LocalTime.of(11,35), LocalTime.of(13, 5)));
-        tt.getActivities().add(new Activity("PRO1", "Programováni I", "Kozel", "Úterý", "Přednáška", LocalTime.of(9,5), LocalTime.of(10, 45)));
+        tt.getActivities().add(new Activity("PRO1", "Programování I", "Kozel", "Pondělí", "Cvičení", LocalTime.of(11,35), LocalTime.of(13, 5)));
+        tt.getActivities().add(new Activity("PRO1", "Programování I", "Kozel", "Úterý", "Přednáška", LocalTime.of(9,5), LocalTime.of(10, 45)));
         return tt;
     }
 }

@@ -1,16 +1,26 @@
 package cz.uhk.timetable.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalTime;
 
 public class Activity {
     /** Module abbreviation. **/
+    @SerializedName("predmet")
     private String id;
     /** Full module name. **/
+    @SerializedName("nazev")
     private String name;
+    @SerializedName("vsichniUciteleJmenaTituly")
     private String teacher;
+    @SerializedName("den")
     private String day;
+    @SerializedName("typAkce")
     private String type;
-    private LocalTime start, end;
+    @SerializedName("hodinaSkutOd")
+    private LocalTime start;
+    @SerializedName("hodinaSkutDo")
+    private LocalTime end;
 
     public String getId() {
         return id;
