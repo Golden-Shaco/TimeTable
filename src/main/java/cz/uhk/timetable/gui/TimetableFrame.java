@@ -23,7 +23,6 @@ public class TimetableFrame extends JFrame {
     public TimetableFrame() {
         super("Location Timetable");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        timetable = timetableProvider.readTimetable("J", "J22");
         initGui();
     }
 
@@ -39,7 +38,7 @@ public class TimetableFrame extends JFrame {
         JToolBar toolBar = new JToolBar();
 
         JComboBox<String> comboBoxBuilding = new JComboBox<>();
-        comboBoxBuilding.setModel(new DefaultComboBoxModel<>(new String[]{"J", "A"}));
+        comboBoxBuilding.setModel(new DefaultComboBoxModel<>(new String[]{"A", "B", "C", "CX", "E", "F", "H", "J", "P", "S"}));
         JComboBox<String> comboBoxRoom = new JComboBox<>();
         comboBoxBuilding.addActionListener(new ActionListener() {
             @Override
@@ -52,8 +51,15 @@ public class TimetableFrame extends JFrame {
         Action updateTimetable = new AbstractAction("Update Timetable") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                timetable = timetableProvider.readTimetable(comboBoxBuilding.getSelectedItem().toString(), comboBoxRoom.getSelectedItem().toString());
-                repaint();
+                try {
+                    timetable = timetableProvider.readTimetable(comboBoxBuilding.getSelectedItem().toString(), comboBoxRoom.getSelectedItem().toString());
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(
+                            TimetableFrame.this,
+                            String.format("Nebyla vybrána místnost."),
+                            "Chyba", JOptionPane.ERROR_MESSAGE);
+                }
+                timetableModel.fireTableDataChanged();
             }
         };
 
@@ -69,7 +75,11 @@ public class TimetableFrame extends JFrame {
 
         @Override
         public int getRowCount() {
-            return timetable.getActivities().size();
+            try {
+                return timetable.getActivities().size();
+            } catch (Exception e) {
+                return 0;
+            }
         }
 
         @Override
