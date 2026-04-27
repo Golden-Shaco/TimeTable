@@ -13,10 +13,10 @@ public class Activity {
     private String name;
     @SerializedName("vsichniUciteleJmenaTituly")
     private String teacher;
-    @SerializedName("den")
-    private String day;
     @SerializedName("typAkce")
     private String type;
+    @SerializedName("den")
+    private String day;
     @SerializedName("hodinaSkutOd")
     private LocalTime start;
     @SerializedName("hodinaSkutDo")
@@ -78,12 +78,12 @@ public class Activity {
         this.end = end;
     }
 
-    public Activity(String id, String name, String teacher, String day, String type, LocalTime start, LocalTime end) {
+    public Activity(String id, String name, String teacher, String type, String day, LocalTime start, LocalTime end) {
         this.id = id;
         this.name = name;
         this.teacher = teacher;
-        this.day = day;
         this.type = type;
+        this.day = day;
         this.start = start;
         this.end = end;
     }
@@ -97,8 +97,8 @@ public class Activity {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", teacher='" + teacher + '\'' +
-                ", day='" + day + '\'' +
                 ", type='" + type + '\'' +
+                ", day='" + day + '\'' +
                 ", start=" + start +
                 ", end=" + end +
                 '}';
